@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="java-web-learning-C" />
+        <module name="quickstart" />
+        <module name="day01-Servlet" />
+        <module name="day02-reqeust" />
+        <module name="book-online" />
+        <module name="day03-response" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="severlet" target="16" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
