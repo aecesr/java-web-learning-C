@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面可以更换验证码</title>
+</head>
+<body>
+<img src="/code" alt="" id="veriftCode">
+<a href="" id="asd">看不清？换一张</a>
+<script>
+    window.onload=function (){
+        const img =document.getElementById("veriftCode");
+        const  a= document.getElementById("asd")
+        a.onclick=function (){
+            const date=new Date().getTime();
+            img.src="/code?"+date;
+        }
+    }
+</script>
+</body>
+</html>
