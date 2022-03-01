@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration xscan="true" scanPeriod="60 seconds" debug="false">
+    <appender name="CONSOLE" CLASS="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>
+                    rn> %d-{HH:mm:ss. SSS} [%boldYellow (%thread)] [%highLight(%-5Level)] %boLdCyan(%c{30}.%M) - %boLdBLue (%m%n)
+                </pattern>
+            </encoder>
+    </appender>
+    <logger name="com.example.cookie" level="DEBUG"/>
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

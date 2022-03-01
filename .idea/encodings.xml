@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Cookie-session/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Cookie-session/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/book-online/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/book-online/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comprehensive-exercise/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comprehensive-exercise/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/day01-Servlet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/day01-Servlet/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/day02-reqeust/src/main/java" charset="UTF-8" />

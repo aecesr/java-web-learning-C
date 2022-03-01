@@ -2,19 +2,23 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Cookie-session" />
         <module name="java-web-learning-C" />
         <module name="quickstart" />
         <module name="day01-Servlet" />
         <module name="day02-reqeust" />
         <module name="book-online" />
+        <module name="comprehensive-exercise" />
         <module name="day03-response" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Cookie-session" target="10" />
       <module name="severlet" target="16" />
     </bytecodeTargetLevel>
   </component>
