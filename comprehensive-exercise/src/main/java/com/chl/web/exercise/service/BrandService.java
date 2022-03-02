@@ -62,6 +62,7 @@ public class BrandService {
         return brand;
     }
 
+
    //修改
     public void update(Brand brand) {
         SqlSession sqlSession = factory.openSession();

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax请求示例起步---原生的js异步请求</title>
+</head>
+<body>
+<lable for="clock">js定时器</lable>
+<input type="text" id="clock">
+<input type="button" id="btn" value="停止">
+<hr>
+<h1>下方是服务器端返回的数据</h1>
+<h2 id="info">请求之前的内容</h2>
+<input type="text" name="username" >
+<script>
+
+    let count = setInterval("clock()",1000)
+    function clock(){
+        let d = new Date();
+        document.getElementById("clock").value=d;
+    }
+
+    setTimeout(function () {
+
+        let xHttp;
+        if (window.XMLHttpRequest) {
+            //创建核心对象
+            xHttp = new XMLHttpRequest();
+        } else {
+            // 处理 IE6 IE5
+            xHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //发送请求
+        xHttp.open("GET", "http://localhost:80/ajaxServlet");
+        xHttp.send();
+
+        //获取响应
+        xHttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById("info").innerText = document.getElementById("info").innerText+this.responseText;
+            }
+        }
+    },2000);
+
+</script>
+</body>
+</html>

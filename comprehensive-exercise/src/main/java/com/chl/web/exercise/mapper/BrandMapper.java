@@ -19,6 +19,7 @@ public interface BrandMapper {
     void add(Brand brand);
 
 
+
      // 根据id查询
 
     @Select("SELECT * FROM tb_brand WHERE id = #{id} ")

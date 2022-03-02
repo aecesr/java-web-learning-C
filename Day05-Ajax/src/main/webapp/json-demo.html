@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json字符串示例</title>
+</head>
+<body>
+<script>
+    const jsonStr= '{"name":"zhangsan","age":18}'
+    console.log(jsonStr)
+    console.log(typeof jsonStr)
+    // json字符串转对象
+    const json=JSON.parse(jsonStr)
+    console.log(json)
+    console.log(jsonStr.name)
+
+
+    const obj={
+        name:"lisi",
+        age:24
+    }
+    console.log(obj.name)
+    console.log(typeof obj);
+    //对象转字符串
+    const objStr=JSON.stringify(obj)
+    console.log(typeof objStr);
+</script>
+</body>
+</html>

@@ -19,6 +19,8 @@ public interface UserMapper {
     @Select("SELECT * FROM tb_user WHERE username = #{username} ")
     User selectByUsername(String username);
 
+    @Select("SELECT * FROM tb_user WHERE id = #{name} ")
+    User selectByname(String name);
 
      // 添加用户
 

@@ -1,6 +1,8 @@
 package com.chl.web.exercise.service;
 
+import com.chl.web.exercise.entity.Brand;
 import com.chl.web.exercise.entity.User;
+import com.chl.web.exercise.mapper.BrandMapper;
 import com.chl.web.exercise.mapper.UserMapper;
 import com.chl.web.exercise.util.SqlSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -29,6 +31,18 @@ public class UserService {
         sqlSession.close();
         return user ;
     }
+    public  boolean Check(User user) {
+        //1. 获取SqlSession
+        SqlSession sqlSession = factory.openSession();
+        //2. 获取UserMapper
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        //3. 判断用户名是否存在
+        User u = mapper.selectByUsername(user.getUsername());
+
+        sqlSession.close();
+        return u == null;
+
+    }
     public  boolean register(User user) {
         //1. 获取SqlSession
         SqlSession sqlSession = factory.openSession();
@@ -36,6 +50,7 @@ public class UserService {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         //3. 判断用户名是否存在
         User u = mapper.selectByUsername(user.getUsername());
+
         if (u == null) {
             // 用户名不存在，注册
             mapper.add(user);
@@ -43,5 +58,7 @@ public class UserService {
         }
         sqlSession.close();
         return u == null;
+
     }
+
 }

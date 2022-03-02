@@ -46,6 +46,7 @@
         height: 320px;
         margin: 0 auto;
         width: 640px;
+        position: relative;
     }
 
     @media (max-width: 767px) {
@@ -102,11 +103,13 @@
             max-height: 350px;
         }
     }
-    a{
+
+    a {
         font-size: 10px;
         text-decoration: none;
         color: #F1F1F2;
     }
+
     svg {
         position: absolute;
         width: 320px;
@@ -152,15 +155,16 @@
         width: 120px;
         height: 50px;
         background-color: #8a8a8d;
-        box-shadow: 0px 0px 40px 16px rgba(0 ,0 ,0 ,0.22);
+        box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
         text-align: center;
         margin-left: 60px;
     }
-    form{
+
+    form {
         position: relative;
     }
 
-    #veriftCode{
+    #veriftCode {
         margin-top: 5px;
     }
 
@@ -173,7 +177,8 @@
     #submit:focus {
         color: #f2f2f2;
     }
-    #return{
+
+    #return {
         color: #2D2F36;
         font-size: 16px;
         padding-top: 20px;
@@ -181,6 +186,14 @@
 
     #submit:active {
         color: #d0d0d2;
+    }
+    #p{
+        font-size: 16px;
+        opacity: 0;
+        color: red;
+        position: absolute;
+        top: 67px;
+        right: 50px;
     }
 </style>
 </head>
@@ -217,7 +230,7 @@
                 <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143"/>
             </svg>
             <div class="form">
-                <form action="/register" method="post">
+                <form action="/register" method="get">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username">
                     <label for="password">Password</label>
@@ -229,35 +242,48 @@
                 </form>
             </div>
         </div>
-
+        <p id="p">用户名已存在</p>
     </div>
 </div>
 <script>
-    window.onload=function (){
-        const img =document.getElementById("veriftCode");
-        const  a= document.getElementById("asd")
-        a.onclick=function (){
-            const date=new Date().getTime();
-            img.src="/code?"+date;
+    window.onload = function () {
+        const img = document.getElementById("veriftCode");
+        const a = document.getElementById("asd")
+        a.onclick = function () {
+            const date = new Date().getTime();
+            img.src = "/code?" + date;
         }
     }
-    var current = null;
-    document.querySelector('#email').addEventListener('focus', function (e) {
-        if (current) current.pause();
-        current = anime({
-            targets: 'path',
-            strokeDashoffset: {
-                value: 0,
-                duration: 700,
-                easing: 'easeOutQuart'
-            },
-            strokeDasharray: {
-                value: '240 1386',
-                duration: 700,
-                easing: 'easeOutQuart'
+
+    document.getElementById("username").onblur = function () {
+        const username = this.value;
+        // window.location='/checkServlet?username='+this.value;
+        let xHttp;
+        if (window.XMLHttpRequest) {
+            //创建核心对象
+            xHttp = new XMLHttpRequest();
+        } else {
+            // 处理 IE6 IE5
+            xHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //发送请求
+        xHttp.open("GET", "http://localhost:80/checkServlet?username="+username);
+        xHttp.send();
+        //获取响应
+        xHttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                if (this.responseText === "true") {
+                    document.getElementById("p").style.opacity=0;
+                }else {
+                    document.getElementById("p").style.opacity=1;
+
+                }
             }
-        });
-    });
+        }
+
+    }
+    var current = null;
+
     document.querySelector('#password').addEventListener('focus', function (e) {
         if (current) current.pause();
         current = anime({
