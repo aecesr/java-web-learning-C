@@ -23,4 +23,8 @@ public class User {
 //    密码
     private String password;
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

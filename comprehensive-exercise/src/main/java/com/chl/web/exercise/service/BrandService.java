@@ -38,7 +38,7 @@ public class BrandService {
 
       //添加
 
-    public void add(Brand brand) {
+    public  void add(Brand brand) {
         //1. 获取SqlSession
         SqlSession sqlSession = factory.openSession();
         //2. 获取BrandMapper

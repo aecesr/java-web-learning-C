@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用axios向后端请求品牌列表数据</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <a href="addBrand.html">新增品牌</a>
+    <hr>
+    <table id="branTable">
+
+    </table>
+</div>
+
+<script>
+    window.onload = function () {
+        axios({
+            method: "get",
+            url: "http://localhost:80/selectAll"
+        }).then(function (resp) {
+            let brands = resp.data;
+            let tableData =
+                "<tr>"+
+                    "<td>序号</td>"+
+                    "<td>品牌名称</td>"+
+                    "<td>企业名称</td>"+
+                    "<td>排序</td>"+
+                    "<td>品牌介绍</td>"+
+                    "<td>状态</td>"+
+                    "<td>操作</td>"+
+                "</tr>";
+            for (let i = 0; i < brands.length; i++) {
+                let brand=brands[i]
+                console.log(brand["id"])
+                console.log(typeof brand)
+                tableData+=
+                    "<tr>" +
+                        "<td>"+brand["id"]+"</td>" +
+                        "<td>"+brand["brandName"]+"</td>" +
+                        "<td>"+brand["companyName"]+"</td>" +
+                        "<td>"+brand["ordered"]+"</td>" +
+                        "<td>"+brand["description"]+"</td>" +
+                        "<td>"+brand["status"]+"</td>" +
+                        "<td>" +
+                            "<a href=\"#\">修改</a>"+
+                            "<a href=\"#\">删除</a>"+
+                         "</td>"+
+                    "</tr>";
+                console.log('as\n\
+                asda\
+                asdasd')
+            }
+            document.getElementById("branTable").innerHTML=tableData;
+        });
+    }
+</script>
+</body>
+</html>

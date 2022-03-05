@@ -18,7 +18,7 @@ public class IndexServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         List<Brand> brands = brandService.selectAll();
         req.setAttribute("brands",brands);
-        req.getRequestDispatcher("/index.jsp").forward(req,resp);
+        req.getRequestDispatcher("/brand.html").forward(req,resp);
     }
 
     @Override

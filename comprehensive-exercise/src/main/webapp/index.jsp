@@ -20,7 +20,7 @@
     <div class="tbl-header">
 
         <hr>
-        <table cellpadding="0" cellspacing="0" border="0">
+        <table >
             <thead>
             <tr>
                 <th>序号</th>
@@ -35,7 +35,7 @@
         </table>
     </div>
     <div class="tbl-content">
-        <table cellpadding="0" cellspacing="0" border="0">
+        <table >
             <tbody>
             <%
                 for (Brand brand : brands) {
